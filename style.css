@@ -14,6 +14,8 @@ body {
 }
 
 #startButton, #restartButton {
+    width: 200px;
+    height: 100px;
     padding: 15px 30px;
     font-size: 18px;
     background-color: #eb88ff;
@@ -30,8 +32,6 @@ body {
 }
 
 .main-container {
-    width: 300px;
-    height: 100px;
     display: flex;
     flex-direction: column; 
     align-items: center;
@@ -75,3 +75,4 @@ body {
     margin: 0;
     padding: 2px 0;
 }
+

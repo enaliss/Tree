@@ -1,0 +1,63 @@
+body {
+    background-color: #000;
+    color: #9b5b0d;
+    font-family: monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+#startButtonContainer {
+    text-align: center;
+}
+
+#startButton {
+    padding: 15px 30px;
+    font-size: 18px;
+    background-color: #eb88ff;
+    color: black;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+#startButton:hover {
+    background-color: #eb88ff;
+}
+
+.main-container {
+    display: flex;
+    align-items: flex-start; 
+    gap: 20px; 
+}
+
+.tree-section {
+     width: 150px;
+    height: 200px;
+    white-space: pre;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+.lyrics-section {
+      width: 300px;
+    height: 200px; 
+    min-height: 10em;
+    text-align: left;
+}
+
+.red { color: #ef8484; }
+.green { color: #90fe90; }
+.yellow { color: #f2f286; }
+.blue { color: #7f7fff; }
+.magenta { color: #eb88ff; }
+.cyan { color: #7bdfdf; }
+
+.lyric-line {
+    color: #eb88ff; 
+    margin: 0;
+    padding: 2px 0;
+}

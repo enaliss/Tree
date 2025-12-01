@@ -70,7 +70,7 @@ function sleep(ms) {
 }
 
 async function animateSequence() {
-    animationIntervalId = setInterval(updateTree, 800);
+    animationIntervalId = setInterval(updateTree, 2000);
    
     for (const lyricData of LYRICS_PART_1) {
         const newLine = document.createElement('p');
@@ -100,3 +100,4 @@ startButton.addEventListener('click', async () => {
     animateSequence();
 });
 updateTree();
+

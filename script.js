@@ -39,6 +39,7 @@ const LYRICS_PART_2 = [
 const treeOutput = document.getElementById('tree-output');
 const lyricsOutput = document.getElementById('lyrics-output');
 const startButton = document.getElementById('startButton');
+const restartButton = document.getElementById('restartButton');
 const mainContent = document.getElementById('mainContent');
 const audioElement = document.getElementById('song');
 
@@ -69,7 +70,22 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+async function startExperience() {
+    document.getElementById('startButtonContainer').style.display = 'none';
+    document.getElementById('restartButtonContainer').style.display = 'none';
+    mainContent.style.display = 'flex';
+    lyricsOutput.innerHTML = ''; 
+
+    await sleep(500); 
+    audioElement.currentTime = 0;
+    audioElement.play(); 
+    await animateSequence();
+}
+
 async function animateSequence() {
+    if (animationIntervalId) {
+        clearInterval(animationIntervalId);
+    }
     animationIntervalId = setInterval(updateTree, 500);
    
     for (const lyricData of LYRICS_PART_1) {
@@ -82,7 +98,7 @@ async function animateSequence() {
 
     await sleep(1000); 
     lyricsOutput.innerHTML = ''; 
-    
+
     for (const lyricData of LYRICS_PART_2) {
         const newLine = document.createElement('p');
         newLine.classList.add('lyric-line');
@@ -90,15 +106,12 @@ async function animateSequence() {
         lyricsOutput.appendChild(newLine);
         await sleep(lyricData.delay); 
     }
+    await sleep(1000);
+    clearInterval(animationIntervalId);
+    audioElement.pause();
+    document.getElementById('restartButtonContainer').style.display = 'block';
 }
 
-startButton.addEventListener('click', async () => {
-    document.getElementById('startButtonContainer').style.display = 'none';
-    mainContent.style.display = 'flex';
-    await sleep(500); 
-    audioElement.play(); 
-    animateSequence();
-});
+startButton.addEventListener('click', startExperience);
+restartButton.addEventListener('click', startExperience); 
 updateTree();
-
-
